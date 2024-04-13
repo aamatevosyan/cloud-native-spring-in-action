@@ -67,9 +67,9 @@ tasks.getByName<BootBuildImage>("bootBuildImage") {
 
     docker {
         publishRegistry {
-            username.set(project.findProperty("registryUsername") as String)
-            password.set(project.findProperty("registryToken") as String)
-            url.set(project.findProperty("registryUrl") as String)
+            username.set(project.findProperty("registryUsername").toString())
+            password.set(project.findProperty("registryToken").toString())
+            url.set(project.findProperty("registryUrl").toString())
         }
     }
 }
