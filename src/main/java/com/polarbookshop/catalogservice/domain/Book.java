@@ -33,6 +33,8 @@ public record Book(
         )
         String author,
 
+        String publisher,
+
         @NotNull(
                 message = "The book price must be defined."
         )
@@ -50,21 +52,38 @@ public record Book(
         @Version
         int version
 ) {
-        public static @Nonnull Book of(
-                String isbn,
-                String title,
-                String author,
-                Double price
-        ) {
-                return new Book(
-                        null,
-                        isbn,
-                        title,
-                        author,
-                        price,
-                        Instant.now(),
-                        Instant.now(),
-                        0
-                );
-        }
+    public static @Nonnull Book of(
+            String isbn,
+            String title,
+            String author,
+            String publisher,
+            Double price
+    ) {
+        return new Book(
+                null,
+                isbn,
+                title,
+                author,
+                publisher,
+                price,
+                Instant.now(),
+                Instant.now(),
+                0
+        );
+    }
+
+    public static @Nonnull Book of(
+            String isbn,
+            String title,
+            String author,
+            Double price
+    ) {
+        return Book.of(
+                isbn,
+                title,
+                author,
+                null,
+                price
+        );
+    }
 }
